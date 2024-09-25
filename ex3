@@ -2,12 +2,12 @@ public class Entier {
     // Attribut encapsulé
     private int val;
 
-    // Setter pour l'attribut val
+    // Méthode pour définir la valeur
     public void setVal(int val) {
         this.val = val;
     }
 
-    // Getter pour l'attribut val
+    // Méthode pour obtenir la valeur
     public int getVal() {
         return val;
     }
@@ -17,15 +17,56 @@ public class Entier {
 
 public class TestPassage {
     public static void main(String[] args) {
-        // Initialisation des valeurs à 10
         int i = 10;
         Entier e = new Entier();
         e.setVal(10);
-        int[] t = {10, 10};
+        int[] t = new int[2];
+        t[0] = 10;
+        t[1] = 10;
 
-        // Affichage initial
-        System.out.println("Avant modification:");
-        System.out.println("i = " + i);
-        System.out.println("e = " + e.getVal());
-        System.out.println("t[0] = " + t[0]);
+        System.out.println("Avant modifie()");
+        System.out.println("i: " + i);
+        System.out.println("e: " + e.getVal());
+        System.out.println("t[0]: " + t[0]);
 
+        modifie(i);
+        modifie(e);
+        modifie(t);
+
+        System.out.println("Après modifie()");
+        System.out.println("i: " + i);
+        System.out.println("e: " + e.getVal());
+        System.out.println("t[0]: " + t[0]);
+
+        modifieBis(t);
+        modifieBis(e);
+
+        System.out.println("Après modifieBis()");
+        System.out.println("i: " + i);
+        System.out.println("e: " + e.getVal());
+        System.out.println("t[0]: " + t[0]);
+    }
+
+    public static void modifie(int param) {
+        param += 1;
+    }
+
+    public static void modifie(Entier param) {
+        param.setVal(param.getVal() + 1);
+    }
+
+    public static void modifie(int[] param) {
+        param[0] += 1;
+    }
+
+    public static void modifieBis(int[] param) {
+        param = new int[2];
+        param[0] += 1;
+    }
+
+    public static void modifieBis(Entier param) {
+        Entier e2 = new Entier();
+        e2.setVal(param.getVal());
+        param.setVal(param.getVal() + 1);
+    }
+}
