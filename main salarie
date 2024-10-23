@@ -1,0 +1,21 @@
+public class GestionSalaries {
+
+    public static void main(String[] args) {
+        // Initialisation de plusieurs salariés
+        Salarie[] personnels = new Salarie[3];
+
+        // Salarié classique
+        personnels[0] = new Salarie("Marie", "Employe", 1400);
+
+        // Représentant avec des ventes
+        personnels[1] = new Salarie("Jean", "REPRESENTANT", 1200, 30000);
+
+        // Salarié classique
+        personnels[2] = new Salarie("Paul", "Employe", 1500);
+
+        // Affichage des informations pour chaque salarié
+        for (Salarie s : personnels) {
+            s.afficherInformations();
+        }
+    }
+}
