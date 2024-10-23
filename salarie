@@ -1,0 +1,42 @@
+public class Salarie {
+    private String nom;
+    private String poste;
+    private double salaireBase;
+    private double ventes; // Utilisé seulement si le salarié est un représentant
+
+    // Constructeur pour les employés non-représentants
+    public Salarie(String nom, String poste, double salaireBase) {
+        this.nom = nom;
+        this.poste = poste;
+        this.salaireBase = salaireBase;
+        this.ventes = 0; // Pas de ventes pour un salarié classique
+    }
+
+    // Constructeur pour les représentants
+    public Salarie(String nom, String poste, double salaireBase, double ventes) {
+        this.nom = nom;
+        this.poste = poste;
+        this.salaireBase = salaireBase;
+        this.ventes = ventes;
+    }
+
+    // Méthode pour calculer le salaire final
+    public double calculerSalaire() {
+        if (poste.equalsIgnoreCase("REPRESENTANT")) {
+            // Les représentants ont une commission de 10 % sur leurs ventes
+            return salaireBase + (ventes * 0.10);
+        } else {
+            // Les autres salariés n'ont pas de commission
+            return salaireBase;
+        }
+    }
+
+    // Méthode pour afficher les informations du salarié
+    public void afficherInformations() {
+        System.out.println("Nom : " + nom);
+        System.out.println("Poste : " + poste);
+        System.out.println("Salaire final : " + calculerSalaire() + " €");
+        System.out.println("----------------------------");
+    }
+}
+
